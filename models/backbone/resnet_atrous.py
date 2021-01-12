@@ -1,6 +1,5 @@
 import math
 import torch.nn as nn
-import torch
 
 __all__ = ['ResNet', 'resnet18', 'resnet34', 'resnet50']
 
@@ -108,8 +107,7 @@ class ResNet(nn.Module):
     def __init__(self, block, layers, used_layers):
         self.inplanes = 64
         super(ResNet, self).__init__()
-        self.conv1 = nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=0,  # 3
-                               bias=False)
+        self.conv1 = nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=0, bias=False)
         self.bn1 = nn.BatchNorm2d(64)
         self.relu = nn.ReLU(inplace=True)
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
@@ -122,8 +120,7 @@ class ResNet(nn.Module):
         layer4 = True if 4 in used_layers else False
 
         if layer3:
-            self.layer3 = self._make_layer(block, 256, layers[2],
-                                           stride=1, dilation=2)  # 15x15, 7x7
+            self.layer3 = self._make_layer(block, 256, layers[2], stride=1, dilation=2)  # 15x15, 7x7
             self.feature_size = (256 + 128) * block.expansion
         else:
             self.layer3 = lambda x: x  # identity
@@ -196,7 +193,6 @@ class ResNet(nn.Module):
 
 def resnet18(**kwargs):
     """Constructs a ResNet-18 model.
-
     """
     model = ResNet(BasicBlock, [2, 2, 2, 2], **kwargs)
     return model
@@ -204,7 +200,6 @@ def resnet18(**kwargs):
 
 def resnet34(**kwargs):
     """Constructs a ResNet-34 model.
-
     """
     model = ResNet(BasicBlock, [3, 4, 6, 3], **kwargs)
     return model
@@ -212,18 +207,6 @@ def resnet34(**kwargs):
 
 def resnet50(**kwargs):
     """Constructs a ResNet-50 model.
-
     """
     model = ResNet(Bottleneck, [3, 4, 6, 3], **kwargs)
     return model
-
-
-if __name__ == '__main__':
-    net = resnet50()
-    print(net)
-    net = net.cuda()
-    var = torch.FloatTensor(1, 3, 127, 127).cuda()
-    net(var)
-    print("==============")
-    var = torch.FloatTensor(1, 3, 255, 255).cuda()
-    net(var)

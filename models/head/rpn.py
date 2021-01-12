@@ -9,7 +9,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from xcorr import xcorr_fast, xcorr_depthwise
+from models.xcorr import xcorr_fast, xcorr_depthwise
 from models.init_weight import init_weights
 
 class RPN(nn.Module):
@@ -50,7 +50,6 @@ class UPChannelRPN(RPN):
         loc = self.loc_adjust(xcorr_fast(loc_feature, loc_kernel))
         return cls, loc
 
-
 class DepthwiseXCorr(nn.Module):
     def __init__(self, in_channels, hidden, out_channels, kernel_size=3, hidden_kernel_size=5):
         super(DepthwiseXCorr, self).__init__()
@@ -79,7 +78,6 @@ class DepthwiseXCorr(nn.Module):
         out = self.head(feature)
         return out
 
-
 class DepthwiseRPN(RPN):
     def __init__(self, anchor_num=5, in_channels=256, out_channels=256):
         super(DepthwiseRPN, self).__init__()
@@ -90,7 +88,6 @@ class DepthwiseRPN(RPN):
         cls = self.cls(z_f, x_f)
         loc = self.loc(z_f, x_f)
         return cls, loc
-
 
 class MultiRPN(RPN):
     def __init__(self, anchor_num, in_channels, weighted=False):

@@ -2,11 +2,15 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
+
 from yacs.config import CfgNode as CN
 
 __C = CN()
+
 cfg = __C
+
 __C.META_ARC = "siamrpn_r50_l234_dwxcorr"
+
 __C.CUDA = True
 
 # ------------------------------------------------------------------------ #
@@ -14,6 +18,7 @@ __C.CUDA = True
 # ------------------------------------------------------------------------ #
 __C.TRAIN = CN()
 
+# Anchor Target
 # Positive anchor threshold
 __C.TRAIN.THR_HIGH = 0.6
 
@@ -28,6 +33,7 @@ __C.TRAIN.POS_NUM = 16
 
 # Number of anchors per images
 __C.TRAIN.TOTAL_NUM = 64
+
 
 __C.TRAIN.EXEMPLAR_SIZE = 127
 
@@ -93,8 +99,11 @@ __C.TRAIN.LR_WARMUP.KWARGS = CN(new_allowed=True)
 __C.DATASET = CN(new_allowed=True)
 
 # Augmentation
+# for template
 __C.DATASET.TEMPLATE = CN()
 
+# Random shift see [SiamPRN++](https://arxiv.org/pdf/1812.11703)
+# for detail discussion
 __C.DATASET.TEMPLATE.SHIFT = 4
 
 __C.DATASET.TEMPLATE.SCALE = 0.05
@@ -127,13 +136,13 @@ __C.DATASET.VID = CN()
 __C.DATASET.VID.ROOT = 'training_dataset/vid/crop511'
 __C.DATASET.VID.ANNO = 'training_dataset/vid/train.json'
 __C.DATASET.VID.FRAME_RANGE = 100
-__C.DATASET.VID.NUM_USE = 100000  # repeat until reach NUM_USE
+__C.DATASET.VID.NUM_USE = 100000  
 
 __C.DATASET.YOUTUBEBB = CN()
 __C.DATASET.YOUTUBEBB.ROOT = 'training_dataset/yt_bb/crop511'
 __C.DATASET.YOUTUBEBB.ANNO = 'training_dataset/yt_bb/train.json'
 __C.DATASET.YOUTUBEBB.FRAME_RANGE = 3
-__C.DATASET.YOUTUBEBB.NUM_USE = -1  # use all not repeat
+__C.DATASET.YOUTUBEBB.NUM_USE = -1 
 
 __C.DATASET.COCO = CN()
 __C.DATASET.COCO.ROOT = 'training_dataset/coco/crop511'
@@ -146,15 +155,14 @@ __C.DATASET.DET.ROOT = 'training_dataset/det/crop511'
 __C.DATASET.DET.ANNO = 'training_dataset/det/train.json'
 __C.DATASET.DET.FRAME_RANGE = 1
 __C.DATASET.DET.NUM_USE = -1
+
 __C.DATASET.VIDEOS_PER_EPOCH = 600000
-
-
 # ------------------------------------------------------------------------ #
 # Backbone options
 # ------------------------------------------------------------------------ #
 __C.BACKBONE = CN()
 
-# Backbone type: resnet18,34,50;alexnet;mobilenet
+# Backbone: resnet18,34,50;alexnet;mobilenet
 __C.BACKBONE.TYPE = 'res50'
 
 __C.BACKBONE.KWARGS = CN(new_allowed=True)

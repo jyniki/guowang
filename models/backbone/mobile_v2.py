@@ -22,7 +22,6 @@ def conv_1x1_bn(inp, oup):
         nn.ReLU6(inplace=True)
     )
 
-
 class InvertedResidual(nn.Module):
     def __init__(self, inp, oup, stride, expand_ratio, dilation=1):
         super(InvertedResidual, self).__init__()
@@ -55,7 +54,6 @@ class InvertedResidual(nn.Module):
             return x + self.conv(x)
         else:
             return self.conv(x)
-
 
 class MobileNetV2(nn.Sequential):
     def __init__(self, width_mult=1.0, used_layers=[3, 5, 7]):
@@ -136,14 +134,3 @@ class MobileNetV2(nn.Sequential):
 def mobilenetv2(**kwargs):
     model = MobileNetV2(**kwargs)
     return model
-
-
-if __name__ == '__main__':
-    net = mobilenetv2()
-    print(net)
-    from torch.autograd import Variable
-    tensor = Variable(torch.Tensor(1, 3, 255, 255)).cuda()
-    net = net.cuda()
-    out = net(tensor)
-    for i, p in enumerate(out):
-        print(i, p.size())

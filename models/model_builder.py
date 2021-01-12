@@ -8,7 +8,7 @@ from __future__ import unicode_literals
 import torch.nn as nn
 import torch.nn.functional as F
 
-from core.config import 
+from core.config import cfg
 from models.loss import select_cross_entropy_loss, weight_l1_loss
 from models.backbone import get_backbone
 from models.head import get_rpn_head, get_mask_head, get_refine_head
