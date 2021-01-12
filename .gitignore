@@ -4,3 +4,4 @@
 **/configs/
 *.yaml
 **/.idea/
+**/.vscode/
