@@ -1,3 +1,8 @@
+'''
+Author: Niki
+Date: 2021-01-12 23:22:15
+Description: 
+'''
 from tqdm import tqdm
 
 class Dataset(object):
@@ -28,6 +33,4 @@ class Dataset(object):
         """
         self.tracker_path = path
         self.tracker_names = tracker_names
-        # for video in tqdm(self.videos.values(), 
-        #         desc='loading tacker result', ncols=100):
-        #     video.load_tracker(path, tracker_names)
+       

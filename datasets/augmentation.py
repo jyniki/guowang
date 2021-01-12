@@ -1,5 +1,3 @@
-# Copyright (c) SenseTime. All Rights Reserved.
-
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -8,8 +6,7 @@ from __future__ import unicode_literals
 import numpy as np
 import cv2
 
-from pysot.utils.bbox import corner2center, \
-        Center, center2corner, Corner
+from toolkit.utils.bbox import corner2center, Center, center2corner, Corner
 
 
 class Augmentation:

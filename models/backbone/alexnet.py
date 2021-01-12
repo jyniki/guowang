@@ -9,8 +9,6 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 import torch.nn as nn
-
-
 class AlexNetLegacy(nn.Module):
     configs = [3, 96, 256, 384, 384, 256]
 
