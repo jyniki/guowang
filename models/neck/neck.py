@@ -1,13 +1,14 @@
-# Copyright (c) SenseTime. All Rights Reserved.
-
+'''
+Author: Niki
+Date: 2021-01-12 19:00:06
+Description: 
+'''
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
 import torch.nn as nn
-
-
 class AdjustLayer(nn.Module):
     def __init__(self, in_channels, out_channels, center_size=7):
         super(AdjustLayer, self).__init__()
