@@ -1,11 +1,12 @@
-# Copyright (c) SenseTime. All Rights Reserved.
-
+'''
+Author: Niki
+Date: 2021-01-12 23:54:40
+Description: 
+'''
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
-
-
 class Meter(object):
     def __init__(self, name, val, avg):
         self.name = name
@@ -19,7 +20,6 @@ class Meter(object):
 
     def __format__(self, *tuples, **kwargs):
         return self.__repr__()
-
 
 class AverageMeter:
     """Computes and stores the average and current value"""

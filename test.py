@@ -12,11 +12,11 @@ import cv2
 import torch
 import numpy as np
 
-from pysot.core.config import cfg
-from pysot.models.model_builder import ModelBuilder
-from pysot.tracker.tracker_builder import build_tracker
-from pysot.utils.bbox import get_axis_aligned_bbox
-from pysot.utils.model_load import load_pretrain
+from core.config import cfg
+from models.model_builder import ModelBuilder
+from tracker.tracker_builder import build_tracker
+from toolkit.utils.bbox import get_axis_aligned_bbox
+from toolkit.utils.model_load import load_pretrain
 from toolkit.datasets import DatasetFactory
 from toolkit.utils.region import vot_overlap, vot_float2str
 

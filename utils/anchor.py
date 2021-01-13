@@ -1,16 +1,15 @@
-# Copyright (c) SenseTime. All Rights Reserved.
-
+'''
+Author: Niki
+Date: 2021-01-12 23:54:40
+Description: 
+'''
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
-
 import math
-
 import numpy as np
-
-from pysot.utils.bbox import corner2center, center2corner
-
+from toolkit.utils.bbox import corner2center, center2corner
 
 class Anchors:
     """
